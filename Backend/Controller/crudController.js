@@ -26,14 +26,16 @@ class CrudController {
   }
 
   static async createItem(req, res) {
-    const itemData = req.params.name;
-    ItemModel.createItem(itemData, (err, item) => {
+    const itemId = req.body.id;
+    const itemData = req.body.name;
+    console.log(req.body);
+    ItemModel.createItem(itemId, itemData, (err, item) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ error: "Server error" });
       }
 
-      if (!itemData) {
+      if (!item) {
         return res.status(404).json({ error: "Item data not found" });
       }
       return res.status(200).json(item);
@@ -49,11 +51,8 @@ class CrudController {
         console.error(err);
         return res.status(500).json({ error: "Server error" });
       }
-      if (!itemId) {
+      if (!item) {
         return res.status(404).json({ error: "Item not found" });
-      }
-      if (!itemData) {
-        return res.status(404).json({ error: "Item data not found" });
       }
       return res.status(200).json(item);
     });
