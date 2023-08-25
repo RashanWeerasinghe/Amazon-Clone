@@ -15,9 +15,13 @@ class AuthController {
 
   static async login(req, res) {
     // Validate input, authenticate user, and return a token
+
+    const { email, password } = req.body;
+
+    const authenticated = true;
     if (authenticated) {
-      const payload = { userId: user.id };
-      const secretKey = crypto.randomBytes(64).toString("hex");
+      const payload = { userId: 1234 };
+      const secretKey = "my_secret_key";
       const options = { expiresIn: "1h" };
 
       const token = jwt.sign(payload, secretKey, options);
@@ -27,3 +31,5 @@ class AuthController {
     }
   }
 }
+
+module.exports = AuthController;

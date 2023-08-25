@@ -1,12 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const authRoutes = require("./Routes/authRoutes");
+const authRoutes = require("./Routes/authRoutes");
 const crudRoutes = require("./Routes/crudRoutes");
 
 const app = express();
 
 app.use(bodyParser.json());
-// // app.use("/auth", authRoutes);
+app.use("/auth", authRoutes);
 app.use("/crud", crudRoutes);
 
 const hostname = "127.0.0.1";
