@@ -54,6 +54,11 @@ class AuthController {
       return res.status(200).json({ accessToken: accessToken });
     });
   }
+  static async logout(req, res) {
+    const refreshToken = req.body.refreshToken;
+    refreshTokens = refreshTokens.filter((t) => t !== refreshToken);
+    res.sendStatus(204);
+  }
 }
 
 module.exports = AuthController;
