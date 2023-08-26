@@ -2,7 +2,8 @@ const UserModel = require("../Model/userModel");
 const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-
+require("dotenv").config();
+let refreshTokens = [];
 class AuthController {
   static async register(req, res) {
     // Validate input and create a new user
@@ -15,17 +16,27 @@ class AuthController {
 
   static async login(req, res) {
     // Validate input, authenticate user, and return a token
+    let authenticated = false;
 
-    const { email, password } = req.body;
+    const userName = req.body.username;
+    const password = req.body.password;
+    if (userName && password) {
+      authenticated = true;
+    }
 
-    const authenticated = true;
     if (authenticated) {
       const payload = { userId: 1234 };
-      const secretKey = "my_secret_key";
+      // const secretKey = "my_secret_key";
       const options = { expiresIn: "1h" };
 
-      const token = jwt.sign(payload, secretKey, options);
-      return res.status(200).json({ token });
+      const token = jwt.sign(payload, process.env.TOKEN_KEY, {
+        expiresIn: "10s",
+      });
+      const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_KEY, {
+        expiresIn: "24h",
+      });
+      refreshTokens.push(refreshToken);
+      return res.status(200).json({ token: token, refreshToken: refreshToken });
     } else {
       return res.status(401).json({ error: "Invalid credentials" });
     }
