@@ -25,14 +25,15 @@ class AuthController {
     }
 
     if (authenticated) {
-      const payload = { userId: 1234 };
+      const username = req.body.username;
+      const user = { name: username };
       // const secretKey = "my_secret_key";
       const options = { expiresIn: "1h" };
 
-      const token = jwt.sign(payload, process.env.TOKEN_KEY, {
-        expiresIn: "10s",
+      const token = jwt.sign(user, process.env.TOKEN_KEY, {
+        expiresIn: "1min",
       });
-      const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_KEY, {
+      const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY, {
         expiresIn: "24h",
       });
       refreshTokens.push(refreshToken);
@@ -40,6 +41,18 @@ class AuthController {
     } else {
       return res.status(401).json({ error: "Invalid credentials" });
     }
+  }
+  static async token(req, res) {
+    const refreshToken = req.body.refreshToken;
+    if (refreshToken == null) res.sendStatus(401);
+    if (!refreshTokens.includes(refreshToken)) res.sendStatus(403);
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY, (err, user) => {
+      if (err) res.sendStatus(403);
+      const accessToken = jwt.sign({ name: user.name }, process.env.TOKEN_KEY, {
+        expiresIn: "1min",
+      });
+      return res.status(200).json({ accessToken: accessToken });
+    });
   }
 }
 
