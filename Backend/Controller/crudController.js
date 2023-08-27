@@ -57,6 +57,19 @@ class CrudController {
       return res.status(200).json(item);
     });
   }
+  static async deleteItem(req, res) {
+    const itemId = req.body.id;
+    ItemModel.delete(itemId, (err, item) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "Server error" });
+      }
+      if (!item) {
+        return res.status(404).json({ error: "Item not found" });
+      }
+      return res.status(200).json(item);
+    });
+  }
 }
 
 module.exports = CrudController;

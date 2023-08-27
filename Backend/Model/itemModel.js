@@ -26,8 +26,8 @@ class ItemModel {
     );
   }
 
-  // static deleteItem(itemId, callback) {
-  //   connection.query("DELETE FROM items WHERE id = ?", [itemId], callback);
-  // }
+  static delete(itemId, callback) {
+    connection.query("DELETE FROM items WHERE id = ?", [itemId], callback);
+  }
 }
 module.exports = ItemModel;

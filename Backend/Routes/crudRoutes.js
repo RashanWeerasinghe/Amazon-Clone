@@ -25,4 +25,11 @@ router.put(
   CrudController.updateItem
 );
 
+router.delete(
+  "/item/delete/:id",
+  verifyToken,
+  checkUserRole(["admin", "editor"]),
+  CrudController.deleteItem
+);
+
 module.exports = router;
