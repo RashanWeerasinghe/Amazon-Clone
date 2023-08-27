@@ -35,7 +35,6 @@ class AuthController {
 
     const email = req.body.email;
     const password = req.body.password;
-    console.log("password: ", password);
     let C_password;
 
     if (!email || !password) {

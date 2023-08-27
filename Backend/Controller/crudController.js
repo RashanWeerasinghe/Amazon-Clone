@@ -12,7 +12,7 @@ class CrudController {
   }
   static async getItemById(req, res) {
     const itemId = req.params.id;
-
+    console.log("itemid:", itemId);
     ItemModel.getItemById(itemId, (err, item) => {
       if (err) {
         console.error(err);
@@ -43,8 +43,8 @@ class CrudController {
   }
 
   static async updateItem(req, res) {
-    const itemId = req.params.id;
-    const newData = req.params.name;
+    const itemId = req.body.id;
+    const newData = req.body.name;
 
     ItemModel.updateItem(itemId, newData, (err, item) => {
       if (err) {

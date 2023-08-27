@@ -6,15 +6,20 @@ const checkUserRole = require("../Middleware/checkUserRole");
 const router = express.Router();
 
 router.get("/items", verifyToken, CrudController.getAllItems);
-router.get("/items/:id", verifyToken, CrudController.getItemById);
+router.get(
+  "/item/:id",
+  verifyToken,
+  checkUserRole(["admin", "editor"]),
+  CrudController.getItemById
+);
 router.post(
-  "/items/create",
+  "/item/create/:id",
   verifyToken,
   checkUserRole(["admin", "editor"]),
   CrudController.createItem
 );
 router.put(
-  "/items/:id/:name",
+  "/item/update/:id",
   verifyToken,
   checkUserRole(["admin", "editor"]),
   CrudController.updateItem

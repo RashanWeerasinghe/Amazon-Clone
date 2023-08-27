@@ -7,7 +7,7 @@ class UserModel {
     connection.query("SELECT*FROM user where email=?", [email], callback);
   }
   static getUserById(userId, callback) {
-    connection.query("SELECT * FROM user WHERE id = ?", [userId], callback);
+    connection.query("SELECT * FROM user WHERE iduser = ?", [userId], callback);
   }
   static createUser(email, password, role, callback) {
     connection.query(

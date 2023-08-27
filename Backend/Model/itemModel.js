@@ -20,7 +20,7 @@ class ItemModel {
 
   static updateItem(itemId, newData, callback) {
     connection.query(
-      "UPDATE items SET ? WHERE id = ?",
+      "UPDATE items SET name=? WHERE id = ?",
       [newData, itemId],
       callback
     );
