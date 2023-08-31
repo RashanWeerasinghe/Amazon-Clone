@@ -5,7 +5,17 @@ class amazonController {
     const company_id = req.params.id;
     amazonModel.getEmployee(company_id, (err, items) => {
       if (err) {
-        console.err(err);
+        console.error(err);
+        return res.status(500).json({ error: "Server error" });
+      }
+      return res.status(200).json(items);
+    });
+  }
+  static async getEmpProjectsById(req, res) {
+    const employee_id = req.params.id;
+    amazonModel.getEmpProjects(employee_id, (err, items) => {
+      if (err) {
+        console.error(err);
         return res.status(500).json({ error: "Server error" });
       }
       return res.status(200).json(items);
