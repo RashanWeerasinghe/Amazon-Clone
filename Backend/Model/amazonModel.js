@@ -36,6 +36,13 @@ class amazonModel {
       callback
     );
   }
+  static getEmployeeIsCompanyName(employee_id, callback) {
+    connection.query(
+      "select company.company_name from company  left join employee on company.idcompany=employee.company_id where employee.employee_id=? ",
+      [employee_id],
+      callback
+    );
+  }
 }
 
 module.exports = amazonModel;

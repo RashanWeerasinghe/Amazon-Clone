@@ -11,6 +11,16 @@ class amazonController {
       return res.status(200).json(items);
     });
   }
+  static async getEmployeeIsCompany(req, res) {
+    const employee_id = req.params.id;
+    amazonModel.getEmployeeIsCompanyName(employee_id, (err, items) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "server error" });
+      }
+      return res.status(200).json(items);
+    });
+  }
   static async getEmpProjectsById(req, res) {
     const employee_id = req.params.id;
     amazonModel.getEmpProjects(employee_id, (err, items) => {

@@ -7,6 +7,11 @@ const router = express.Router();
 
 router.get("/employees/:id", verifyToken, amazonController.getEmployeeById);
 router.get(
+  "/employees/iscompany/:id",
+  verifyToken,
+  amazonController.getEmployeeIsCompany
+);
+router.get(
   "/employee/projects/:id",
   verifyToken,
   amazonController.getEmpProjectsById
