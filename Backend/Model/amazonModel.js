@@ -30,6 +30,12 @@ class amazonModel {
       callback
     );
   }
+  static getAllProjectsAndEmployees(callback) {
+    connection.query(
+      "select employee.employee_id,employee.emp_name,emp_position,employee.emp_email,employee.emp_wage,project.project_name from employee left join project_has_employee on project_has_employee.employee_id=employee.employee_id right join project on project.project_id=project_has_employee.project_project_id ",
+      callback
+    );
+  }
 }
 
 module.exports = amazonModel;

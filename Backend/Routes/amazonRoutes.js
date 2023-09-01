@@ -22,4 +22,9 @@ router.get(
   verifyToken,
   amazonController.getProjectEmployeeById
 );
+router.get(
+  "/employee/getallprojectsemployees",
+  verifyToken,
+  amazonController.getAllProjectsEmployees
+);
 module.exports = router;
