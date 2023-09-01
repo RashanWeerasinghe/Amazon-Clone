@@ -16,4 +16,10 @@ router.post(
   verifyToken,
   amazonController.postEmpCreateProject
 );
+
+router.get(
+  "/employee/projectemployee/:id",
+  verifyToken,
+  amazonController.getProjectEmployeeById
+);
 module.exports = router;

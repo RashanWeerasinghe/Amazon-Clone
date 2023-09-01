@@ -32,6 +32,16 @@ class amazonController {
       return res.status(200).json(items);
     });
   }
+  static async getProjectEmployeeById(req, res) {
+    const project_id = req.params.id;
+    amazonModel.getProjectEmployee(project_id, (err, items) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "server error" });
+      }
+      return res.status(200).json(items);
+    });
+  }
 }
 
 module.exports = amazonController;
