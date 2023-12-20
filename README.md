@@ -1,7 +1,7 @@
 # SL-EPMS 
 
 ## Project Description
-SL-Clone is an Employee and Project Management System built to efficiently manage employees, projects, and administration tasks. This Node.js-based web application offers features such as user registration, authentication using JWT, role-based authorization, and a set of RESTful APIs for managing employees and projects.
+SL-EPMS  is an Employee and Project Management System built to efficiently manage employees, projects, and administration tasks. This Node.js-based web application offers features such as user registration, authentication using JWT, role-based authorization, and a set of RESTful APIs for managing employees and projects.
 
 ### GitHub Repository
 - GitHub Repository Link: [SL-Clone GitHub](https://github.com/RashanWeerasinghe/SL-Clone.git)
@@ -49,7 +49,7 @@ The project's folder structure is organized as follows:
   - `index.js`: Entry point for the application
 
 ### Getting Started
-To get started with SL-Clone, follow these steps:
+To get started with SL-EPMS , follow these steps:
 
 1. Clone the project repository from [GitHub](https://github.com/RashanWeerasinghe/SL-Clone.git).
 2. Navigate to the project directory.
@@ -59,7 +59,7 @@ To get started with SL-Clone, follow these steps:
 6. Access the APIs using the provided endpoints.
 
 ### Contributing
-Contributions to SL-Clone are welcome! If you'd like to contribute to the project, please follow our [Contribution Guidelines](CONTRIBUTING.md).
+Contributions to SL-EPMS are welcome! If you'd like to contribute to the project, please follow our [Contribution Guidelines](CONTRIBUTING.md).
 
 ### License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
