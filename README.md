@@ -1,4 +1,4 @@
-# SL-Clone
+# SL-EPMS 
 
 ## Project Description
 SL-Clone is an Employee and Project Management System built to efficiently manage employees, projects, and administration tasks. This Node.js-based web application offers features such as user registration, authentication using JWT, role-based authorization, and a set of RESTful APIs for managing employees and projects.
